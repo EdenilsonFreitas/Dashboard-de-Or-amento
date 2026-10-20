@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InfraKnight - Dashboard de Orçamento</title>
+    <!-- Fonte Inter & Chart.js -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Header -->
+        <header class="header">
+            <div>
+                <h1>🛡️ InfraKnight — Gestão do Orçamento</h1>
+                <p>Consolidado: Mobiliário, Escritório e Infraestrutura de TI</p>
+            </div>
+            <div class="budget-badge">
+                Orçamento Total: <span>R$ 150.000,00</span>
+            </div>
+        </header>
+
+        <!-- KPI Cards -->
+        <section class="kpi-grid">
+            <div class="kpi-card total">
+                <h3>Orçamento Inicial</h3>
+                <div class="value" id="kpi-budget">R$ 150.000,00</div>
+                <small>Teto máximo aprovado</small>
+            </div>
+            <div class="kpi-card spent">
+                <h3>Total Comprometido</h3>
+                <div class="value" id="kpi-spent">R$ 0,00</div>
+                <small id="kpi-percent">0% utilizado</small>
+            </div>
+            <div class="kpi-card reserve">
+                <h3>Reserva de Seg. (10%)</h3>
+                <div class="value" id="kpi-reserve">R$ 7.838,72</div>
+                <small>Frete e montagem</small>
+            </div>
+            <div class="kpi-card balance">
+                <h3>Saldo Restante</h3>
+                <div class="value" id="kpi-balance">R$ 0,00</div>
+                <small>Disponível para contingency</small>
+            </div>
+        </section>
+
+        <!-- Barra de Progresso Orçamental -->
+        <section class="progress-section">
+            <div class="progress-header">
+                <span>Progresso do Uso da Verba</span>
+                <span id="progress-text">0%</span>
+            </div>
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="progress-fill"></div>
+            </div>
+        </section>
+
+        <!-- Gráficos -->
+        <section class="charts-grid">
+            <div class="chart-card">
+                <h3>📊 Gastos por Categoria (R$)</h3>
+                <canvas id="categoryChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <h3>🥧 Distribuição: Mobiliário vs. TI</h3>
+                <canvas id="sectorChart"></canvas>
+            </div>
+        </section>
+
+        <!-- Tabela Detalhada com Filtros -->
+        <section class="table-section">
+            <div class="table-header">
+                <h2>📋 Detalhamento dos Itens</h2>
+                <div class="table-controls">
+                    <input type="text" id="searchInput" placeholder="🔍 Pesquisar item ou categoria...">
+                    <select id="filterCategory">
+                        <option value="ALL">Todas as Origens</option>
+                        <option value="Mobiliario">Mobiliário e Compras</option>
+                        <option value="TI">Infraestrutura de TI</option>
+                    </select>
+                </div>
+            </div>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Origem</th>
+                            <th>Categoria / Item</th>
+                            <th>Qtd</th>
+                            <th>Valor Unitário (R$)</th>
+                            <th>Total (R$)</th>
+                            <th>Observação</th>
+                        </tr>
+                    </thead>
+                    <tbody id="itemsTableBody">
+                        <!-- Preenchido via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
