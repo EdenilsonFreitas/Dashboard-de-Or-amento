@@ -20,7 +20,7 @@
 body {
     background-color: var(--bg-color);
     color: var(--text-main);
-    padding: 2rem;
+    padding: 1rem;
 }
 
 .dashboard-container {
@@ -223,3 +223,4 @@ tr:hover {
     border-radius: 4px;
     font-size: 0.75rem;
 }
+
